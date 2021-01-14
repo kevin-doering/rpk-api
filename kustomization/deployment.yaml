@@ -1,0 +1,24 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: rpk-api
+  namespace: rpk-api
+  labels:
+    app: rpk-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rpk-api
+  template:
+    metadata:
+      labels:
+        app: rpk-api
+    spec:
+      containers:
+      - name: rpk-api
+        image: rampike/apx-rpk-api
+        ports:
+        - name: web
+          containerPort: 3333
