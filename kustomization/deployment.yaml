@@ -7,7 +7,13 @@ metadata:
   labels:
     app: rpk-api
 spec:
-  replicas: 2
+  minReadySeconds: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
   selector:
     matchLabels:
       app: rpk-api
@@ -18,7 +24,28 @@ spec:
     spec:
       containers:
       - name: rpk-api
-        image: rampike/rpk-api:0.0.2
+        image: rampike/rpk-api:0.0.3
+        imagePullPolicy: IfNotPresent
         ports:
         - name: web
           containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 3000
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
