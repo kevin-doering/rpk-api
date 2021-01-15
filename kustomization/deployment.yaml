@@ -24,21 +24,21 @@ spec:
     spec:
       containers:
       - name: rpk-api
-        image: rampike/rpk-api:0.0.3
+        image: rampike/rpk-api:0.0.2
         imagePullPolicy: IfNotPresent
         ports:
         - name: web
           containerPort: 3000
         livenessProbe:
           httpGet:
-            path: /healthz
+            path: /v0/healthz
             port: 3000
           initialDelaySeconds: 5
           timeoutSeconds: 5
           periodSeconds: 15
         readinessProbe:
           httpGet:
-            path: /readyz
+            path: /v0/readyz
             port: 3000
           initialDelaySeconds: 5
           timeoutSeconds: 5
