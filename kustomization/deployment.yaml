@@ -21,4 +21,4 @@ spec:
         image: rampike/rpk-api:0.0.0
         ports:
         - name: web
-          containerPort: 3333
+          containerPort: 3000
