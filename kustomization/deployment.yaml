@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: rpk-api
-        image: rampike/rpk-api:0.0.2
+        image: rampike/rpk-api:0.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - name: web
