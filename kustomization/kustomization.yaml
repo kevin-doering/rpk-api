@@ -9,4 +9,4 @@ resources:
 images:
 - name: rampike/rpk-api
   newName: rampike/rpk-api
-  newTag: 0.0.6
+  newTag: 0.0.7
