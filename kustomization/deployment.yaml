@@ -31,14 +31,14 @@ spec:
           containerPort: 3000
         livenessProbe:
           httpGet:
-            path: /v0/healthz
+            path: /
             port: 3000
           initialDelaySeconds: 5
           timeoutSeconds: 5
           periodSeconds: 15
         readinessProbe:
           httpGet:
-            path: /v0/readyz
+            path: /
             port: 3000
           initialDelaySeconds: 5
           timeoutSeconds: 5
