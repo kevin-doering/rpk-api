@@ -7,6 +7,9 @@ resources:
 - certificate.yaml
 - hpa.yaml
 images:
+- name: /rpk-api
+  newName: /rpk-api
+  newTag: 0.0.8
 - name: rampike/rpk-api
   newName: rampike/rpk-api
   newTag: 0.0.7
